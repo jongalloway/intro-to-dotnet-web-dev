@@ -19,30 +19,26 @@ namespace RazorPagesPizza.Migrations
                 .HasAnnotation("ProductVersion", "6.0.18")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
             modelBuilder.Entity("RazorPagesPizza.Models.Pizza", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("INTEGER");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                b.Property<bool>("IsGlutenFree")
+                    .HasColumnType("INTEGER");
 
-                    b.Property<bool>("IsGlutenFree")
-                        .HasColumnType("bit");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                b.Property<decimal>("Price")
+                    .HasColumnType("REAL");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                b.HasKey("Id");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Pizza");
-                });
+                b.ToTable("Pizza");
+            });
 #pragma warning restore 612, 618
         }
     }
